@@ -60,7 +60,7 @@ const Home = () => {
   return (
     <>
       {/* ===== HERO ===== */}
-      <section style={{ position: 'relative', color: '#fff', overflow: 'hidden', minHeight: '78vh', display: 'flex', alignItems: 'flex-end' }}>
+      <section style={{ position: 'relative', color: '#fff', overflow: 'hidden', minHeight: '78vh', display: 'flex', alignItems: 'center' }}>
         <img className="hero-bg" src="/assets/images/hero-plantation.jpg" alt="Coconut palm plantation in Indonesia"
           style={{ position: 'absolute', inset: 0, objectFit: 'cover', width: '100%', height: '100%' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(18,54,38,.35) 0%,rgba(15,25,18,.55) 55%,rgba(9,14,10,.88) 100%)' }} />
@@ -78,9 +78,8 @@ const Home = () => {
           </g>
         </svg>
 
-        <div ref={r1} className="reveal container" style={{ position: 'relative', zIndex: 2, paddingBlock: '90px 64px', width: '100%' }}>
-          <span className="eyebrow" style={{ color: C.gold }}>
-            <span style={{ background: C.gold, width: 18, height: 1, display: 'inline-block', marginRight: '.5em', flexShrink: 0 }}></span>
+        <div ref={r1} className="reveal container" style={{ position: 'relative', zIndex: 2, paddingBlock: '80px', width: '100%' }}>
+          <span className="eyebrow hero-eyebrow">
             <T id="DOSIER EKSPOR — INDONESIA" en="EXPORT DOSSIER — INDONESIA" zh="出口档案 — 印度尼西亚" />
           </span>
           <h1 style={{ color: '#fff', fontSize: 'clamp(2.2rem,4.6vw,3.6rem)', lineHeight: 1.08, maxWidth: '15ch', marginTop: '12px' }}>
@@ -304,6 +303,14 @@ const Home = () => {
           .cat-grid, .retail-grid { grid-template-columns:1fr; }
           .badge-row { flex-direction:column; align-items:flex-start; }
           .badge-row .btn { margin-left:0 !important; }
+        }
+
+        /* Hero eyebrow — gold strip, no red */
+        .hero-eyebrow {
+          color: #c9972f;
+        }
+        .hero-eyebrow::before {
+          background: #c9972f !important;
         }
       `}</style>
     </>

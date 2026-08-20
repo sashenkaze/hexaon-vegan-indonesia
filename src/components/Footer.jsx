@@ -106,9 +106,9 @@ const Footer = () => (
         <span data-i18n="zh">版权所有。</span>
       </span>
       <span>
-        <span data-i18n="id">Dosier Ekspor · Indonesia</span>
-        <span data-i18n="en">Export Dossier · Indonesia</span>
-        <span data-i18n="zh">出口档案 · 印度尼西亚</span>
+        <span data-i18n="id">Dosier Ekspor <span className='mx-1.5'>·</span> Indonesia</span>
+        <span data-i18n="en">Export Dossier <span className='mx-1.5'>·</span> Indonesia</span>
+        <span data-i18n="zh">出口档案 <span className='mx-1.5'>·</span> 印度尼西亚</span>
       </span>
     </div>
 
