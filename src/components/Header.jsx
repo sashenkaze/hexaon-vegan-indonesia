@@ -151,21 +151,26 @@ const Header = () => {
           background: '#f5efe2',
           borderBottom: '1px solid rgba(28,26,21,.14)',
           padding: '24px',
-          display: 'flex', flexDirection: 'column', gap: '24px',
+          display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '20px',
           maxHeight: 'calc(100vh - 74px)', overflowY: 'auto',
           boxShadow: '0 16px 28px -12px rgba(28,26,21,.28)',
           zIndex: 59,
           animation: 'mobileNavIn .2s ease',
         }}>
-          <ul style={{ display: 'flex', flexDirection: 'column', gap: '20px', listStyle: 'none', margin: 0, padding: 0 }}>
+          <ul style={{ display: 'flex', flexDirection: 'column', gap: '20px', listStyle: 'none', margin: 0, padding: 0, width: '100%' }}>
             {NAV_LINKS.map(({ to, label }) => (
               <li key={to}>
-                <Link to={to} onClick={() => setMobileOpen(false)} style={{
-                  fontFamily: 'Inter, sans-serif', fontSize: '1rem',
-                  color: isCurrent(to) ? '#123626' : '#4a453c',
-                  fontWeight: isCurrent(to) ? 600 : 400,
-                  textDecoration: 'none',
-                }}>
+                <Link to={to} onClick={() => setMobileOpen(false)}
+                  className={isCurrent(to) ? 'nav-link nav-link-mobile current' : 'nav-link nav-link-mobile'}
+                  style={{
+                    fontFamily: 'Inter, sans-serif', fontSize: '1rem',
+                    color: isCurrent(to) ? '#123626' : '#4a453c',
+                    fontWeight: isCurrent(to) ? 600 : 400,
+                    textDecoration: 'none',
+                    position: 'relative',
+                    paddingBottom: '4px',
+                    display: 'inline-block',
+                  }}>
                   <span data-i18n="id">{label.id}</span>
                   <span data-i18n="en">{label.en}</span>
                   <span data-i18n="zh">{label.zh}</span>
@@ -174,34 +179,40 @@ const Header = () => {
             ))}
           </ul>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flexWrap: 'wrap' }}>
-            <Link to="/contact" className="btn btn-primary" onClick={() => setMobileOpen(false)}>
-              <span data-i18n="id">Minta Penawaran</span>
-              <span data-i18n="en">Request a Quote</span>
-              <span data-i18n="zh">索取报价</span>
-            </Link>
+          {/* CTA button */}
+          <Link to="/contact" className="btn btn-primary" onClick={() => setMobileOpen(false)}
+            style={{ alignSelf: 'flex-start' }}>
+            <span data-i18n="id">Minta Penawaran</span>
+            <span data-i18n="en">Request a Quote</span>
+            <span data-i18n="zh">索取报价</span>
+          </Link>
 
-            {/* Lang toggle always visible in mobile menu */}
-            <div role="group" aria-label="Language switch" style={{
-              display: 'flex', gap: '2px',
-              background: 'rgba(28,26,21,.08)', padding: '3px', borderRadius: '3px',
-            }}>
-              {langButtons.map(({ code, label }) => (
-                <button key={code} type="button" onClick={() => setLang(code)}
-                  aria-pressed={currentLang === code}
-                  style={{
-                    background: currentLang === code ? '#ac1b32' : 'none',
-                    border: 0,
-                    color: currentLang === code ? '#fff' : '#4a453c',
-                    fontFamily: 'Inter, sans-serif', fontSize: '.72rem', letterSpacing: '.06em',
-                    padding: '4px 9px', borderRadius: '2px', cursor: 'pointer',
-                    transition: 'background .15s ease, color .15s ease',
-                    fontWeight: currentLang === code ? 600 : 400,
-                  }}>
-                  {label}
-                </button>
-              ))}
-            </div>
+          {/* Lang toggle — fade in when topbar scrolled away, same animation as desktop */}
+          <div role="group" aria-label="Language switch" style={{
+            display: 'flex', gap: '2px', alignSelf: 'flex-start',
+            background: 'rgba(28,26,21,.08)', padding: scrolled ? '3px' : '0px', borderRadius: '3px',
+            maxHeight: scrolled ? '40px' : '0px',
+            opacity: scrolled ? 1 : 0,
+            overflow: 'hidden',
+            pointerEvents: scrolled ? 'auto' : 'none',
+            transition: 'max-height .3s ease, opacity .25s ease, padding .3s ease',
+          }}>
+            {langButtons.map(({ code, label }) => (
+              <button key={code} type="button" onClick={() => setLang(code)}
+                aria-pressed={currentLang === code}
+                style={{
+                  background: currentLang === code ? '#ac1b32' : 'none',
+                  border: 0,
+                  color: currentLang === code ? '#fff' : '#4a453c',
+                  fontFamily: 'Inter, sans-serif', fontSize: '.72rem', letterSpacing: '.06em',
+                  padding: '4px 9px', borderRadius: '2px', cursor: 'pointer',
+                  transition: 'background .15s ease, color .15s ease',
+                  fontWeight: currentLang === code ? 600 : 400,
+                  whiteSpace: 'nowrap',
+                }}>
+                {label}
+              </button>
+            ))}
           </div>
         </div>
       )}
@@ -217,6 +228,11 @@ const Header = () => {
         }
         .nav-link:hover { color: #1c1a15 !important; }
         .nav-link:hover::after, .nav-link.current::after { transform: scaleX(1); }
+
+        /* Mobile nav links — same underline effect, slightly larger bottom offset */
+        .nav-link-mobile::after {
+          bottom: 0px;
+        }
 
         .nav-toggle {
           display: none !important;

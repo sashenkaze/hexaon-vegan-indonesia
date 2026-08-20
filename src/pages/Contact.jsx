@@ -2,6 +2,39 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 
+const PRODUCT_OPTIONS = [
+  {
+    value: 'Coconut-Derived Commodities',
+    id: 'Komoditas Turunan Kelapa',
+    en: 'Coconut-Derived Commodities',
+    zh: '椰子衍生商品',
+  },
+  {
+    value: 'Other Export Commodities',
+    id: 'Komoditas Ekspor Lainnya',
+    en: 'Other Export Commodities',
+    zh: '其他出口商品',
+  },
+  {
+    value: 'Vanilla Product Line',
+    id: 'Lini Produk Vanili',
+    en: 'Vanilla Product Line',
+    zh: '香草产品系列',
+  },
+  {
+    value: 'Retail Brands (MYCHO / MYPIA / Bumbu Nusantara)',
+    id: 'Merek Ritel (MYCHO / MYPIA / Bumbu Nusantara)',
+    en: 'Retail Brands (MYCHO / MYPIA / Bumbu Nusantara)',
+    zh: '零售品牌（MYCHO / MYPIA / Bumbu Nusantara）',
+  },
+  {
+    value: 'Other',
+    id: 'Lainnya',
+    en: 'Other',
+    zh: '其他',
+  },
+];
+
 const Contact = () => {
   const { currentLang } = useLanguage();
   const [formData, setFormData] = useState({
@@ -67,7 +100,7 @@ const Contact = () => {
       {/* Page Hero */}
       <section className="bg-green-deep text-white relative overflow-hidden">
         <div 
-          className="absolute -right-[8%] -top-[30%] w-[520px] h-[520px] opacity-20"
+          className="absolute right-[-8%] top-[-30%] w-130 h-130 opacity-20"
           style={{
             background: 'radial-gradient(circle, rgba(201,151,47,.16), transparent 70%)'
           }}
@@ -244,26 +277,11 @@ const Contact = () => {
                     onChange={handleChange}
                     className="w-full border border-line bg-white px-4 py-3 text-sm text-ink rounded-sm focus:outline-2 focus:outline-green focus:outline-offset-1 focus:border-green"
                   >
-                    <option value="Coconut-Derived Commodities">
-                      <span data-i18n="id">Komoditas Turunan Kelapa</span>
-                      <span data-i18n="en">Coconut-Derived Commodities</span>
-                      <span data-i18n="zh">椰子衍生商品</span>
-                    </option>
-                    <option value="Other Export Commodities">
-                      <span data-i18n="id">Komoditas Ekspor Lainnya</span>
-                      <span data-i18n="en">Other Export Commodities</span>
-                      <span data-i18n="zh">其他出口商品</span>
-                    </option>
-                    <option value="Vanilla Product Line">
-                      <span data-i18n="id">Lini Produk Vanili</span>
-                      <span data-i18n="en">Vanilla Product Line</span>
-                      <span data-i18n="zh">香草产品系列</span>
-                    </option>
-                    <option value="Retail Brands">
-                      <span data-i18n="id">Merek Ritel</span>
-                      <span data-i18n="en">Retail Brands</span>
-                      <span data-i18n="zh">零售品牌</span>
-                    </option>
+                    {PRODUCT_OPTIONS.map((opt) => (
+                      <option key={opt.value} value={opt.value}>
+                        {opt[currentLang] || opt.en}
+                      </option>
+                    ))}
                   </select>
                 </div>
 
@@ -280,7 +298,7 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     placeholder={getPlaceholder('message')}
-                    className="w-full border border-line bg-white px-4 py-3 text-sm text-ink rounded-sm resize-vertical min-h-[120px] focus:outline-2 focus:outline-green focus:outline-offset-1 focus:border-green"
+                    className="w-full border border-line bg-white px-4 py-3 text-sm text-ink rounded-sm resize-vertical min-h-30 focus:outline-2 focus:outline-green focus:outline-offset-1 focus:border-green"
                   />
                 </div>
 

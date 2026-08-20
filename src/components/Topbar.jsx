@@ -6,31 +6,45 @@ const Topbar = () => {
 
   return (
     <div style={{ background: '#123626', color: '#f5efe2', fontFamily: 'Inter, sans-serif', fontSize: '.76rem' }}>
-      <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingBlock: '8px', gap: '16px', flexWrap: 'wrap' }}>
-        <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', alignItems: 'center', color: 'rgba(245,239,226,.86)' }}>
+      <div className="container" style={{
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        paddingBlock: '8px', gap: '12px',
+      }}>
+        {/* Contact info */}
+        <div className="topbar-contact" style={{
+          display: 'flex', gap: '16px', alignItems: 'center',
+          color: 'rgba(245,239,226,.86)', overflow: 'hidden', minWidth: 0,
+        }}>
           <a href="https://wa.me/62811179804" target="_blank" rel="noopener"
-            style={{ color: 'inherit' }}
-            onMouseEnter={e => e.target.style.color = '#c9972f'}
-            onMouseLeave={e => e.target.style.color = 'rgba(245,239,226,.86)'}
+            style={{ color: 'inherit', whiteSpace: 'nowrap', flexShrink: 0 }}
+            onMouseEnter={e => e.currentTarget.style.color='#c9972f'}
+            onMouseLeave={e => e.currentTarget.style.color='rgba(245,239,226,.86)'}
           >
             +62 811 179 804
           </a>
-          <span style={{ opacity: .4 }}>/</span>
-          <a href="mailto:zengroeddy.backup@gmail.com" style={{ color: 'inherit' }}
-            onMouseEnter={e => e.target.style.color = '#c9972f'}
-            onMouseLeave={e => e.target.style.color = 'rgba(245,239,226,.86)'}
+          {/* Hide sep + email + country on small screens via CSS class */}
+          <span className="topbar-sep" style={{ opacity: .4, flexShrink: 0 }}>/</span>
+          <a href="mailto:zengroeddy.backup@gmail.com"
+            className="topbar-email"
+            style={{ color: 'inherit', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', minWidth: 0 }}
+            onMouseEnter={e => e.currentTarget.style.color='#c9972f'}
+            onMouseLeave={e => e.currentTarget.style.color='rgba(245,239,226,.86)'}
           >
             zengroeddy.backup@gmail.com
           </a>
-          <span style={{ opacity: .4 }}>/</span>
-          <span>
+          <span className="topbar-sep" style={{ opacity: .4, flexShrink: 0 }}>/</span>
+          <span className="topbar-country" style={{ whiteSpace: 'nowrap', flexShrink: 0 }}>
             <span data-i18n="id">Indonesia</span>
             <span data-i18n="en">Indonesia</span>
             <span data-i18n="zh">印度尼西亚</span>
           </span>
         </div>
-        <div role="group" aria-label="Language switch"
-          style={{ display: 'flex', gap: '2px', background: 'rgba(245,239,226,.12)', padding: '3px', borderRadius: '3px' }}>
+
+        {/* Lang switch — always visible in topbar */}
+        <div role="group" aria-label="Language switch" style={{
+          display: 'flex', gap: '2px', flexShrink: 0,
+          background: 'rgba(245,239,226,.12)', padding: '3px', borderRadius: '3px',
+        }}>
           {[
             { code: 'id', label: 'ID' },
             { code: 'en', label: 'EN' },
@@ -52,6 +66,7 @@ const Topbar = () => {
                 borderRadius: '2px',
                 cursor: 'pointer',
                 transition: 'background .15s ease, color .15s ease',
+                whiteSpace: 'nowrap',
               }}
             >
               {label}
@@ -59,6 +74,15 @@ const Topbar = () => {
           ))}
         </div>
       </div>
+
+      <style>{`
+        /* Hide email + separators + country on small screens */
+        @media (max-width: 600px) {
+          .topbar-email,
+          .topbar-country { display: none !important; }
+          .topbar-sep { display: none !important; }
+        }
+      `}</style>
     </div>
   );
 };

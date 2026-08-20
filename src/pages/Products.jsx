@@ -79,16 +79,22 @@ const Products = () => {
       </section>
 
       {/* Quick Jump Nav */}
-      <nav className="bg-sand-2 border-b border-line overflow-x-auto" aria-label="Section jump">
-        <div className="container flex gap-7 py-[14px] font-mono text-[.78rem] tracking-[.03em]">
+      <nav aria-label="Section jump" style={{ background: '#ece2cb', borderBottom: '1px solid rgba(28,26,21,.14)', overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
+        <div className="container" style={{ display: 'flex', gap: '28px', paddingBlock: '14px', fontFamily: 'Inter,sans-serif', fontSize: '.78rem', letterSpacing: '.03em', whiteSpace: 'nowrap' }}>
           {[
-            { href: '#coconut', id: '01 Turunan Kelapa', en: '01 Coconut Derivatives', zh: '01 椰子衍生品' },
-            { href: '#other', id: '02 Komoditas Lain', en: '02 Other Commodities', zh: '02 其他商品' },
-            { href: '#vanilla', id: '03 Lini Vanili', en: '03 Vanilla Line', zh: '03 香草系列' },
-            { href: '#retail', id: '04 Merek Ritel', en: '04 Retail Brands', zh: '04 零售品牌' },
+            { href: '#coconut', id: '01 Turunan Kelapa',  en: '01 Coconut Derivatives', zh: '01 椰子衍生品' },
+            { href: '#other',   id: '02 Komoditas Lain',  en: '02 Other Commodities',   zh: '02 其他商品' },
+            { href: '#vanilla', id: '03 Lini Vanili',     en: '03 Vanilla Line',        zh: '03 香草系列' },
+            { href: '#retail',  id: '04 Merek Ritel',     en: '04 Retail Brands',       zh: '04 零售品牌' },
           ].map(item => (
-            <a key={item.href} href={item.href} className="whitespace-nowrap hover:text-red transition-colors">
-              <T id={item.id} en={item.en} zh={item.zh} />
+            <a key={item.href} href={item.href}
+              style={{ color: '#1c1a15', textDecoration: 'none', whiteSpace: 'nowrap', flexShrink: 0 }}
+              onMouseEnter={e => e.currentTarget.style.color='#ac1b32'}
+              onMouseLeave={e => e.currentTarget.style.color='#1c1a15'}
+            >
+              <span data-i18n="id">{item.id}</span>
+              <span data-i18n="en">{item.en}</span>
+              <span data-i18n="zh">{item.zh}</span>
             </a>
           ))}
         </div>
