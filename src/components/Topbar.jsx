@@ -6,45 +6,26 @@ const Topbar = () => {
 
   return (
     <div style={{ background: '#123626', color: '#f5efe2', fontFamily: 'Inter, sans-serif', fontSize: '.76rem' }}>
-      <div className="container" style={{
-        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        paddingBlock: '8px', gap: '12px',
-      }}>
-        {/* Contact info */}
-        <div className="topbar-contact" style={{
-          display: 'flex', gap: '16px', alignItems: 'center',
-          color: 'rgba(245,239,226,.86)', overflow: 'hidden', minWidth: 0,
-        }}>
-          <a href="https://wa.me/62811179804" target="_blank" rel="noopener"
-            style={{ color: 'inherit', whiteSpace: 'nowrap', flexShrink: 0 }}
-            onMouseEnter={e => e.currentTarget.style.color='#c9972f'}
-            onMouseLeave={e => e.currentTarget.style.color='rgba(245,239,226,.86)'}
-          >
+      <div className="container topbar-inner">
+        {/* Contact info — wraps naturally on small screens */}
+        <div className="topbar-contact">
+          <a href="https://wa.me/62811179804" target="_blank" rel="noopener" className="topbar-link">
             +62 811 179 804
           </a>
-          {/* Hide sep + email + country on small screens via CSS class */}
-          <span className="topbar-sep" style={{ opacity: .4, flexShrink: 0 }}>/</span>
-          <a href="mailto:zengroeddy.backup@gmail.com"
-            className="topbar-email"
-            style={{ color: 'inherit', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', minWidth: 0 }}
-            onMouseEnter={e => e.currentTarget.style.color='#c9972f'}
-            onMouseLeave={e => e.currentTarget.style.color='rgba(245,239,226,.86)'}
-          >
+          <span className="topbar-sep">/</span>
+          <a href="mailto:zengroeddy.backup@gmail.com" className="topbar-link topbar-email">
             zengroeddy.backup@gmail.com
           </a>
-          <span className="topbar-sep" style={{ opacity: .4, flexShrink: 0 }}>/</span>
-          <span className="topbar-country" style={{ whiteSpace: 'nowrap', flexShrink: 0 }}>
+          <span className="topbar-sep">/</span>
+          <span>
             <span data-i18n="id">Indonesia</span>
             <span data-i18n="en">Indonesia</span>
             <span data-i18n="zh">印度尼西亚</span>
           </span>
         </div>
 
-        {/* Lang switch — always visible in topbar */}
-        <div role="group" aria-label="Language switch" style={{
-          display: 'flex', gap: '2px', flexShrink: 0,
-          background: 'rgba(245,239,226,.12)', padding: '3px', borderRadius: '3px',
-        }}>
+        {/* Lang switch */}
+        <div role="group" aria-label="Language switch" className="topbar-langswitch">
           {[
             { code: 'id', label: 'ID' },
             { code: 'en', label: 'EN' },
@@ -55,19 +36,7 @@ const Topbar = () => {
               type="button"
               onClick={() => setLang(code)}
               aria-pressed={currentLang === code}
-              style={{
-                background: currentLang === code ? '#ac1b32' : 'none',
-                border: 0,
-                color: currentLang === code ? '#fff' : 'rgba(245,239,226,.7)',
-                fontFamily: 'Inter, sans-serif',
-                fontSize: '.72rem',
-                letterSpacing: '.06em',
-                padding: '4px 9px',
-                borderRadius: '2px',
-                cursor: 'pointer',
-                transition: 'background .15s ease, color .15s ease',
-                whiteSpace: 'nowrap',
-              }}
+              className={`topbar-lang-btn${currentLang === code ? ' active' : ''}`}
             >
               {label}
             </button>
@@ -76,11 +45,67 @@ const Topbar = () => {
       </div>
 
       <style>{`
-        /* Hide email + separators + country on small screens */
+        .topbar-inner {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding-block: 8px;
+          gap: 16px;
+          flex-wrap: wrap;
+        }
+        .topbar-contact {
+          display: flex;
+          gap: 16px;
+          flex-wrap: wrap;
+          align-items: center;
+          color: rgba(245,239,226,.86);
+        }
+        .topbar-link {
+          color: rgba(245,239,226,.86);
+          text-decoration: none;
+          white-space: nowrap;
+        }
+        .topbar-link:hover { color: #c9972f; }
+        .topbar-sep { opacity: .4; }
+        .topbar-langswitch {
+          display: flex;
+          gap: 2px;
+          flex-shrink: 0;
+          background: rgba(245,239,226,.12);
+          padding: 3px;
+          border-radius: 3px;
+        }
+        .topbar-lang-btn {
+          background: none;
+          border: 0;
+          color: rgba(245,239,226,.7);
+          font-family: Inter, sans-serif;
+          font-size: .72rem;
+          letter-spacing: .06em;
+          padding: 4px 9px;
+          border-radius: 2px;
+          cursor: pointer;
+          transition: background .15s ease, color .15s ease;
+          white-space: nowrap;
+        }
+        .topbar-lang-btn:hover { color: #f5efe2; }
+        .topbar-lang-btn.active { background: #ac1b32; color: #fff; }
+
+        /* Mobile: stack contact info + lang toggle, allow email to wrap */
         @media (max-width: 600px) {
-          .topbar-email,
-          .topbar-country { display: none !important; }
-          .topbar-sep { display: none !important; }
+          .topbar-inner {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+            padding-block: 10px;
+          }
+          .topbar-contact {
+            gap: 8px;
+            font-size: .73rem;
+          }
+          .topbar-email {
+            word-break: break-all;
+          }
         }
       `}</style>
     </div>

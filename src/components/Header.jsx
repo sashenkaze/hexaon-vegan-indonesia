@@ -26,6 +26,15 @@ const Header = () => {
 
   useEffect(() => { setMobileOpen(false); }, [location.pathname]);
 
+  // Auto-close mobile menu when resizing back to desktop
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth > 720) setMobileOpen(false);
+    };
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
   const isCurrent = (to) => location.pathname === to;
 
   const langButtons = [
