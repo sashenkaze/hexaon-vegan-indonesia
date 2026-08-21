@@ -7,7 +7,7 @@ const Footer = () => (
       {/* Brand */}
       <div>
         <div className="footer-brand-name">
-          <img src="/assets/images/logo-icon.png" alt="" style={{ height: '30px', width: 'auto', flexShrink: 0 }} />
+          <img src={`${import.meta.env.BASE_URL}assets/images/logo-icon.png`} alt="" style={{ height: '30px', width: 'auto', flexShrink: 0 }} />
           <span>HEXAON VEGAN INDONESIA</span>
         </div>
         <p style={{ marginTop: '14px', fontSize: '.88rem', color: 'rgba(245,239,226,.68)', maxWidth: '34ch', wordBreak: 'break-word' }}>

@@ -12,12 +12,12 @@ const coconutProducts = [
 ];
 
 const otherCommodities = [
-  { id: "01", img: "/assets/images/betel-nut.jpg", name: { id: "Pinang", en: "Betel Nut", zh: "槟榔" } },
-  { id: "02", img: "/assets/images/coffee-beans.jpg", name: { id: "Kopi", en: "Coffee", zh: "咖啡" } },
-  { id: "03", img: "/assets/images/cacao-beans.jpg", name: { id: "Kakao", en: "Cacao", zh: "可可" } },
-  { id: "04", img: "/assets/images/black-pepper.jpg", name: { id: "Lada Hitam", en: "Black Pepper", zh: "黑胡椒" } },
-  { id: "05", img: "/assets/images/vanilla-pods.jpg", name: { id: "Vanili (Biji Utuh)", en: "Vanilla (Raw Beans)", zh: "香草原豆" } },
-  { id: "06", img: "/assets/images/healthy-chips.jpg", name: { id: "Keripik Sehat", en: "Healthy Chips", zh: "健康脆片" } },
+  { id: "01", img: `${import.meta.env.BASE_URL}assets/images/betel-nut.jpg`, name: { id: "Pinang", en: "Betel Nut", zh: "槟榔" } },
+  { id: "02", img: `${import.meta.env.BASE_URL}assets/images/coffee-beans.jpg`, name: { id: "Kopi", en: "Coffee", zh: "咖啡" } },
+  { id: "03", img: `${import.meta.env.BASE_URL}assets/images/cacao-beans.jpg`, name: { id: "Kakao", en: "Cacao", zh: "可可" } },
+  { id: "04", img: `${import.meta.env.BASE_URL}assets/images/black-pepper.jpg`, name: { id: "Lada Hitam", en: "Black Pepper", zh: "黑胡椒" } },
+  { id: "05", img: `${import.meta.env.BASE_URL}assets/images/vanilla-pods.jpg`, name: { id: "Vanili (Biji Utuh)", en: "Vanilla (Raw Beans)", zh: "香草原豆" } },
+  { id: "06", img: `${import.meta.env.BASE_URL}assets/images/healthy-chips.jpg`, name: { id: "Keripik Sehat", en: "Healthy Chips", zh: "健康脆片" } },
 ];
 
 const vanillaProducts = [
@@ -123,13 +123,13 @@ const Products = () => {
           <div className="grid lg:grid-cols-2 gap-14 items-start mb-12">
             <div className="grid grid-cols-2 gap-3">
               <div className="framed-photo col-span-2">
-                <img src="/assets/images/coco-conveyor.jpg" alt="Coconut processing line" className="w-full object-cover" style={{ aspectRatio: '16/9' }} />
+                <img src={`${import.meta.env.BASE_URL}assets/images/coco-conveyor.jpg`} alt="Coconut processing line" className="w-full object-cover" style={{ aspectRatio: '16/9' }} />
               </div>
               <div className="framed-photo">
-                <img src="/assets/images/coco-pile.jpg" alt="Whole coconuts" className="w-full object-cover" style={{ aspectRatio: '1/1' }} />
+                <img src={`${import.meta.env.BASE_URL}assets/images/coco-pile.jpg`} alt="Whole coconuts" className="w-full object-cover" style={{ aspectRatio: '1/1' }} />
               </div>
               <div className="framed-photo">
-                <img src="/assets/images/coco-container.jpg" alt="Coconut export packaging" className="w-full object-cover" style={{ aspectRatio: '1/1' }} />
+                <img src={`${import.meta.env.BASE_URL}assets/images/coco-container.jpg`} alt="Coconut export packaging" className="w-full object-cover" style={{ aspectRatio: '1/1' }} />
               </div>
             </div>
             <div className="text-ink-soft">
@@ -218,7 +218,7 @@ const Products = () => {
 
           <div className="grid lg:grid-cols-2 gap-14 items-start">
             <div className="framed-photo">
-              <img src="/assets/images/vanilla-products.jpg" alt="Vanilla extract, paste and powder" className="w-full object-cover" style={{ aspectRatio: '4/5' }} />
+              <img src={`${import.meta.env.BASE_URL}assets/images/vanilla-products.jpg`} alt="Vanilla extract, paste and powder" className="w-full object-cover" style={{ aspectRatio: '4/5' }} />
             </div>
             <div className="grid grid-cols-2 gap-[22px]">
               {vanillaProducts.map(v => (
@@ -271,11 +271,11 @@ const Products = () => {
             </p>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
               {[
-                { img: '/assets/images/mycho-crunchy.jpg', name: 'Crunchy', sub: { id: 'Renyah', en: 'Crunchy', zh: '脆脆的' } },
-                { img: '/assets/images/mycho-walnut.jpg', name: 'Walnut', sub: { id: 'Kenari', en: 'Walnut', zh: '核桃' } },
-                { img: '/assets/images/mycho-mixberries.jpg', name: 'Mix Berries', sub: { id: 'Mix Beri', en: 'Mix Berries', zh: '混合莓果' } },
-                { img: '/assets/images/mycho-mixnuts.jpg', name: 'Mix Nuts', sub: { id: 'Mix Kacang', en: 'Mix Nuts', zh: '混合坚果' } },
-                { img: '/assets/images/mycho-tempehflake.jpg', name: 'Tempeh Flake', sub: { id: 'Keping Tempe', en: 'Tempeh Flake', zh: '天贝碎' } },
+                { img: `${import.meta.env.BASE_URL}assets/images/mycho-crunchy.jpg`, name: 'Crunchy', sub: { id: 'Renyah', en: 'Crunchy', zh: '脆脆的' } },
+                { img: `${import.meta.env.BASE_URL}assets/images/mycho-walnut.jpg`, name: 'Walnut', sub: { id: 'Kenari', en: 'Walnut', zh: '核桃' } },
+                { img: `${import.meta.env.BASE_URL}assets/images/mycho-mixberries.jpg`, name: 'Mix Berries', sub: { id: 'Mix Beri', en: 'Mix Berries', zh: '混合莓果' } },
+                { img: `${import.meta.env.BASE_URL}assets/images/mycho-mixnuts.jpg`, name: 'Mix Nuts', sub: { id: 'Mix Kacang', en: 'Mix Nuts', zh: '混合坚果' } },
+                { img: `${import.meta.env.BASE_URL}assets/images/mycho-tempehflake.jpg`, name: 'Tempeh Flake', sub: { id: 'Keping Tempe', en: 'Tempeh Flake', zh: '天贝碎' } },
               ].map((p, i) => (
                 <div key={i} className="bg-card-black border border-sand/10 overflow-hidden group">
                   <div className="overflow-hidden bg-black/20" style={{ aspectRatio: '1/1' }}>
@@ -305,8 +305,8 @@ const Products = () => {
             </p>
             <div className="grid grid-cols-2 gap-4 max-w-[620px]">
               {[
-                { img: '/assets/images/mypia-goldenyolk.jpg', name: 'Golden Yolk', sub: { id: 'Kuning Telur Emas', en: 'Golden Yolk', zh: '金黄蛋黄' } },
-                { img: '/assets/images/mypia-taro.jpg', name: 'Taro', sub: { id: 'Talas', en: 'Taro', zh: '芋头' } },
+                { img: `${import.meta.env.BASE_URL}assets/images/mypia-goldenyolk.jpg`, name: 'Golden Yolk', sub: { id: 'Kuning Telur Emas', en: 'Golden Yolk', zh: '金黄蛋黄' } },
+                { img: `${import.meta.env.BASE_URL}assets/images/mypia-taro.jpg`, name: 'Taro', sub: { id: 'Talas', en: 'Taro', zh: '芋头' } },
               ].map((p, i) => (
                 <div key={i} className="bg-card-black border border-sand/10 overflow-hidden group">
                   <div className="overflow-hidden bg-black/20" style={{ aspectRatio: '1/1' }}>
@@ -355,10 +355,10 @@ const Products = () => {
               </ul>
               <div className="grid grid-cols-2 gap-3">
                 <div className="framed-photo">
-                  <img src="/assets/images/bumbu-gadogado.jpg" alt="Bumbu Nusantara gado-gado" className="w-full object-cover" style={{ aspectRatio: '3/4' }} />
+                  <img src={`${import.meta.env.BASE_URL}assets/images/bumbu-gadogado.jpg`} alt="Bumbu Nusantara gado-gado" className="w-full object-cover" style={{ aspectRatio: '3/4' }} />
                 </div>
                 <div className="framed-photo">
-                  <img src="/assets/images/bumbu-satay.jpg" alt="Bumbu Nusantara satay" className="w-full object-cover" style={{ aspectRatio: '3/4' }} />
+                  <img src={`${import.meta.env.BASE_URL}assets/images/bumbu-satay.jpg`} alt="Bumbu Nusantara satay" className="w-full object-cover" style={{ aspectRatio: '3/4' }} />
                 </div>
               </div>
             </div>

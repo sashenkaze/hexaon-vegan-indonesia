@@ -75,7 +75,7 @@ const About = () => {
           <div ref={r1} className="reveal two-col about-reverse">
             <div className="col-media about-media">
               <div className="framed-photo">
-                <img src="/assets/images/hero-plantation.jpg" alt="Coconut palm plantation" style={{ aspectRatio: '4/3', objectFit: 'cover' }} />
+                <img src={`${import.meta.env.BASE_URL}assets/images/hero-plantation.jpg`} alt="Coconut palm plantation" style={{ aspectRatio: '4/3', objectFit: 'cover' }} />
               </div>
             </div>
             <div className="col-copy">

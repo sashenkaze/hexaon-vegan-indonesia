@@ -56,7 +56,7 @@ const Header = () => {
 
         {/* Logo */}
         <Link to="/" style={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}>
-          <img src="/assets/images/logo-lockup.png" alt="PT Hexaon Vegan Indonesia logo"
+          <img src={`${import.meta.env.BASE_URL}assets/images/logo-lockup.png`} alt="PT Hexaon Vegan Indonesia logo"
             style={{ height: '46px', width: 'auto' }} />
         </Link>
 

@@ -46,12 +46,13 @@ const CAT_ITEMS = [
   { num: '04 / RETAIL', to: '/products#retail', title: { id: 'Merek Ritel', en: 'Retail Brands', zh: '零售品牌' }, desc: { id: 'MYCHO, MYPIA, dan Bumbu Nusantara — cita rasa Indonesia siap ekspor.', en: 'MYCHO, MYPIA, and Bumbu Nusantara — Indonesian flavors, export-ready.', zh: 'MYCHO、MYPIA 与 Bumbu Nusantara——印尼风味，蓄势出口。' } },
 ];
 
+const base = import.meta.env.BASE_URL;
 const RETAIL_ITEMS = [
-  { img: '/assets/images/mycho-crunchy.jpg', name: 'MYCHO', sub: { id: 'Crunchy', en: 'Crunchy', zh: '脆脆的' } },
-  { img: '/assets/images/mycho-walnut.jpg', name: 'MYCHO', sub: { id: 'Walnut', en: 'Walnut', zh: '核桃' } },
-  { img: '/assets/images/mypia-goldenyolk.jpg', name: 'MYPIA', sub: { id: 'Golden Yolk', en: 'Golden Yolk', zh: '金黄蛋黄' } },
-  { img: '/assets/images/mypia-taro.jpg', name: 'MYPIA', sub: { id: 'Taro', en: 'Taro', zh: '芋头' } },
-  { img: '/assets/images/bumbu-satay.jpg', name: 'Bumbu Nusantara', sub: { id: 'Bumbu Satai', en: 'Satay Seasoning', zh: '沙嗲酱' } },
+  { img: `${base}assets/images/mycho-crunchy.jpg`, name: 'MYCHO', sub: { id: 'Crunchy', en: 'Crunchy', zh: '脆脆的' } },
+  { img: `${base}assets/images/mycho-walnut.jpg`, name: 'MYCHO', sub: { id: 'Walnut', en: 'Walnut', zh: '核桃' } },
+  { img: `${base}assets/images/mypia-goldenyolk.jpg`, name: 'MYPIA', sub: { id: 'Golden Yolk', en: 'Golden Yolk', zh: '金黄蛋黄' } },
+  { img: `${base}assets/images/mypia-taro.jpg`, name: 'MYPIA', sub: { id: 'Taro', en: 'Taro', zh: '芋头' } },
+  { img: `${base}assets/images/bumbu-satay.jpg`, name: 'Bumbu Nusantara', sub: { id: 'Bumbu Satai', en: 'Satay Seasoning', zh: '沙嗲酱' } },
 ];
 
 const Home = () => {
@@ -61,7 +62,7 @@ const Home = () => {
     <>
       {/* ===== HERO ===== */}
       <section style={{ position: 'relative', color: '#fff', overflow: 'hidden', minHeight: '78vh', display: 'flex', alignItems: 'center' }}>
-        <img className="hero-bg" src="/assets/images/hero-plantation.jpg" alt="Coconut palm plantation in Indonesia"
+        <img className="hero-bg" src={`${import.meta.env.BASE_URL}assets/images/hero-plantation.jpg`} alt="Coconut palm plantation in Indonesia"
           style={{ position: 'absolute', inset: 0, objectFit: 'cover', width: '100%', height: '100%' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(18,54,38,.35) 0%,rgba(15,25,18,.55) 55%,rgba(9,14,10,.88) 100%)' }} />
 
@@ -129,7 +130,7 @@ const Home = () => {
           <div ref={r3} className="reveal two-col">
             <div className="col-media">
               <div className="framed-photo">
-                <img src="/assets/images/plantation-grove.jpg" alt="Coconut plantation grove, Indonesia" />
+                <img src={`${import.meta.env.BASE_URL}assets/images/plantation-grove.jpg`} alt="Coconut plantation grove, Indonesia" />
               </div>
             </div>
             <div className="col-copy">
